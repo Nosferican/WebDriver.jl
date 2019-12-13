@@ -1,11 +1,11 @@
 push!(LOAD_PATH, joinpath("..", "src"))
 
-using Documenter, PkgTPL
+using Documenter, WebDriver
 
-DocMeta.setdocmeta!(PkgTPL, :DocTestSetup, :(using PkgTPL), recursive = true)
+DocMeta.setdocmeta!(WebDriver, :DocTestSetup, :(using WebDriver), recursive = true)
 
-makedocs(sitename = "PkgTPL",
-         modules = [PkgTPL],
+makedocs(sitename = "WebDriver",
+         modules = [WebDriver],
          pages = [
              "Home" => "index.md",
              "API" => "api.md"
@@ -13,6 +13,6 @@ makedocs(sitename = "PkgTPL",
 )
 
 deploydocs(
-    repo   = "github.com/Nosferican/PkgTPL.jl.git",
+    repo   = "github.com/Nosferican/WebDriver.jl.git",
     push_preview = true
 )

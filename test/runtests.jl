@@ -1,6 +1,6 @@
-using Test, Documenter, PkgTPL
-DocMeta.setdocmeta!(PkgTPL, :DocTestSetup, :(using PkgTPL), recursive = true)
+using Test, Documenter, WebDriver
+DocMeta.setdocmeta!(WebDriver, :DocTestSetup, :(using WebDriver), recursive = true)
 
-@testset "PkgTPL" begin
-    doctest(PkgTPL)
+@testset "WebDriver" begin
+    doctest(WebDriver)
 end

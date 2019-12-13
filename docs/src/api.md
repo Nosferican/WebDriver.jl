@@ -3,13 +3,13 @@
 ## Public
 
 ```@autodocs
-Modules = [PkgTPL]
+Modules = [WebDriver]
 Private = false
 ```
 
 ## Private
 
 ```@autodocs
-Modules = [PkgTPL]
+Modules = [WebDriver]
 Public = false
 ```
