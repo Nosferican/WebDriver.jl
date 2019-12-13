@@ -2,6 +2,11 @@ name: CI
 on: push
 jobs:
   ci:
+    container: node:current
+    services:
+      selenium: 
+        image: selenium/standalone-chrome
+        options: --health-cmd '/opt/bin/check-grid.sh'
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:

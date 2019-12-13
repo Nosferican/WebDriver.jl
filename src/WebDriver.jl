@@ -1,9 +1,9 @@
 """
-    PkgTPL
+    WebDriver
 
-[Repository](https://github.com/Nosferican/PkgTPL.jl)
+[Repository](https://github.com/Nosferican/WebDriver.jl)
 """
-module PkgTPL
+module WebDriver
     for (root, dirs, files) ∈ walkdir(joinpath(@__DIR__))
         foreach(file -> include(joinpath(root, file)), filter!(file -> occursin(r"^\d{2}_\w+\.jl$", file), files))
     end

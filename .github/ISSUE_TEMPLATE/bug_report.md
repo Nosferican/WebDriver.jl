@@ -12,6 +12,7 @@ A clear and concise description of what the bug is.
 **Environment**
  - `versioninfo()`
  - `using Pkg; Pkg.status()`
+ - Remote Driver (e.g., `selenium/standalone-chrome`)
  - Additional context
 
 **Minimal Reproducible Example (MRE)**
