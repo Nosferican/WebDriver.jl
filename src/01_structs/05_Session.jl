@@ -9,8 +9,8 @@ Remote WebDriver Capabilities
   browserName: chrome
   Session Timeouts -- script: 30000, pageLoad: 300000, implicit: 0
   unhandledPromptBehavior: dismiss and notify
-julia> wd = RemoteWebDriver(capabilities, host = "selenium")
-RemoteWebDriver{Capabilities{Nothing,Nothing,Nothing,Nothing}}("http://selenium:4444/wd/hub", Remote WebDriver Capabilities
+julia> wd = RemoteWebDriver(capabilities, port = parse(Int, ENV["WEBDRIVER_PORT"]))
+RemoteWebDriver{Capabilities{Nothing,Nothing,Nothing,Nothing}}("http://localhost:$(ENV["WEBDRIVER_PORT"])/wd/hub", Remote WebDriver Capabilities
   browserName: chrome
   Session Timeouts -- script: 30000, pageLoad: 300000, implicit: 0
   unhandledPromptBehavior: dismiss and notify
