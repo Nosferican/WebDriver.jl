@@ -13,6 +13,7 @@ Parameters = "d96e819e-fc66-5662-9728-84c9c7592b0a"
 Documenter = "0.24"
 HTTP = "0.8"
 JSON3 = "0.1"
+Parameters = "0.12"
 julia = "1"
 
 [extras]
