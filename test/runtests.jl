@@ -28,7 +28,7 @@ session = Session(wd)
 @inferred timeouts!(session, Timeouts())
 # Navigate To
 start_url = current_url(session)
-@test isnothing(navigate!(session, "http://thedemosite.co.uk/addauser.php"))
+@inferred navigate!(session, "http://thedemosite.co.uk/addauser.php")
 # Get Current URL
 @test current_url(session) == "http://thedemosite.co.uk/addauser.php"
 # Back
