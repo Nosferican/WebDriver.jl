@@ -31,12 +31,14 @@ jobs:
       - uses: julia-actions/julia-buildpkg@latest
       - uses: julia-actions/julia-runtest@latest
         env:
+          WEBDRIVER_HOST: localhost
           WEBDRIVER_PORT: ${{ job.services.selenium.ports[4444] }}
       - uses: julia-actions/julia-uploadcodecov@latest
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       - uses: julia-actions/julia-docdeploy@releases/v1
         env:
+          WEBDRIVER_HOST: localhost
           WEBDRIVER_PORT: ${{ job.services.selenium.ports[4444] }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DOCUMENTER_KEY: ${{ secrets.DOCUMENTER_KEY }}

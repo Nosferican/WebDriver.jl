@@ -10,8 +10,7 @@ end
 
 capabilities = Capabilities("chrome")
 @test isa(capabilities, Capabilities)
-wd = RemoteWebDriver(capabilities,
-               host = "selenium")
+wd = RemoteWebDriver(capabilities, host = ENV["WEBDRIVER_HOST"], port = parse(Int, ENV["WEBDRIVER_PORT"]))
 # New Session
 session = Session(wd)
 @test isa(session, Session)
