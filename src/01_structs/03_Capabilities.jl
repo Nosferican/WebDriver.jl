@@ -20,9 +20,7 @@ According to [W3C](https://www.w3.org/TR/webdriver/#dfn-extension-capability).
 ```jldoctest
 julia> capabilities = Capabilities("chrome")
 Remote WebDriver Capabilities
-  browserName: chrome
-  Session Timeouts -- script: 30000, pageLoad: 300000, implicit: 0
-  unhandledPromptBehavior: dismiss and notify
+browserName: chrome
 ```
 """
 struct Capabilities{aIC <: Union{Nothing, Bool},
