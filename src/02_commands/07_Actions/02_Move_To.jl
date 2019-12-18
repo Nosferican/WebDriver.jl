@@ -14,7 +14,7 @@ function moveto!(session::Session; x::Integer = 0, y::Integer = 0)
 end
 function moveto!(element::Element; x::Integer = 0, y::Integer = 0)
     @unpack addr, id = element.session
-    response = HTTP.post("$addr/session/$id/moveto!",
+    response = HTTP.post("$addr/session/$id/moveto",
                          [("Content-Type" => "application/json")],
                          JSON3.write(Dict("element" => element.id,
                                           "x" => x,

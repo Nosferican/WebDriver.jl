@@ -10,5 +10,5 @@ function rect(element::Element)
                         [("Content-Type" => "application/json")])
     @assert response.status == 200
     output = JSON3.read(response.body).value
-	(width = output.width, height = output.height, x = output.x, y = output.y)
+	(width = output.width, height = output.height, x = output.x, y = output.y)::NamedTuple{(:width, :height, :x, :y),NTuple{4,Int64}}
 end

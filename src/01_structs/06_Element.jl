@@ -9,6 +9,8 @@ struct Element
     session::Session
     id::String
     Element(session::Session, id::AbstractString) = new(session, id)
+    # Return Element
+    Element(element::Element, id::AbstractString) = new(element.session, id)
     # Command: Find Element
     function Element(session::Session, location_strategy::AbstractString, value::AbstractString)::Element
         location_strategy ∈ ["css selector", "link text", "partial link text", "tag name", "xpath"] ||

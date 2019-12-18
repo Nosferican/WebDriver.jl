@@ -1,11 +1,11 @@
 # Command: Execute Script
 """
-    script(session::Session, script::AbstractString, args...; async::Bool = false)
+    script!(session::Session, script::AbstractString, args...; async::Bool = false)
 Executes JavaScript (sync / async)
 !!! note
     This command uses the JSON Wire Protocol instead of the current W3c WebDriver API.
 """
-function script(session::Session, _script::AbstractString, args...; async::Bool = false)
+function script!(session::Session, _script::AbstractString, args...; async::Bool = false)
     # args = (selecttype, "Selenium IDE")
     # _script = "arguments[0].value = arguments[1];"
     # async = false
