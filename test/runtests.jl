@@ -20,7 +20,6 @@ session = Session(wd)
 session = Session(wd)
 # Status
 @test status(wd)
-@test isa(wd, WebDriver)
 # Get Timeouts
 @test_broken timeouts(session)
 # Set Timeouts
