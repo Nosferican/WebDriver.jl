@@ -38,3 +38,7 @@ struct Element
     end
 end
 broadcastable(obj::Element) = Ref(obj)
+summary(io::IO, obj::Element) = println(io, "Element")
+function show(io::IO, obj::Element)
+	print(io, summary(obj))
+end

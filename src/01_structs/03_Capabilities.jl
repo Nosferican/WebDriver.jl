@@ -61,12 +61,7 @@ end
 summary(io::IO, obj::Capabilities) = println(io, "Remote WebDriver Capabilities")
 function show(io::IO, obj::Capabilities)
 	print(io, summary(obj))
-	println(io, "  browserName: $(obj.browserName)")
-	println(io, "  $(obj.timeouts)")
-	for pn ∈ (pn for pn ∈ propertynames(obj) if pn ∉ [:browserName, :timeouts])
-		value = getproperty(obj, pn)
-		isnothing(value) || value == "" || println(io, "  $pn: $(getproperty(obj, pn))")
-	end
+	println(io, "browserName: $(obj.browserName)")
 end
 JSON3.StructType(::Type{<:Capabilities}) = JSON3.Struct()
 JSON3.omitempties(::Type{<:Capabilities}) = fieldnames(Capabilities)

@@ -10,15 +10,11 @@ Specifies a remote web driver according to [W3C](https://www.w3.org/TR/webdriver
 ```jldoctest
 julia> capabilities = Capabilities("chrome")
 Remote WebDriver Capabilities
-  browserName: chrome
-  Session Timeouts -- script: 30000, pageLoad: 300000, implicit: 0
-  unhandledPromptBehavior: dismiss and notify
-julia> wd = RemoteWebDriver(capabilities, host = "selenium")
-RemoteWebDriver{Capabilities{Nothing,Nothing,Nothing,Nothing}}("http://selenium:4444/wd/hub", Remote WebDriver Capabilities
-  browserName: chrome
-  Session Timeouts -- script: 30000, pageLoad: 300000, implicit: 0
-  unhandledPromptBehavior: dismiss and notify
-, Dict{String,Union{Int64, String}}())
+browserName: chrome
+julia> wd = RemoteWebDriver(capabilities, host = ENV["WEBDRIVER_HOST"], port = parse(Int, ENV["WEBDRIVER_PORT"]))
+Remote WebDriver
+julia> status(wd) # Ready to accept new sessions?
+true
 ```
 """
 struct RemoteWebDriver{C <: Capabilities}
@@ -40,4 +36,8 @@ struct RemoteWebDriver{C <: Capabilities}
 		kw = Dict{String, Union{Int, String}}(string(k) => isa(v, Bool) ? string(v) : v for (k, v) ∈ kwargs if !isnothing(v))
 		new{typeof(capabilities)}(addr, capabilities, kw)
 	end
+end
+summary(io::IO, obj::RemoteWebDriver) = println(io, "Remote WebDriver")
+function show(io::IO, obj::RemoteWebDriver)
+	print(io, summary(obj))
 end

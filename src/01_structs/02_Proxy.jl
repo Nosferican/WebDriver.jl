@@ -51,3 +51,7 @@ struct Proxy{pAU <: Union{Nothing, AbstractString},
 			typeof(socksVersion)}(proxyType, proxyAutoconfigUrl, ftpProxy, httpProxy, noProxy, sslProxy, socksProxy, socksVersion)
 	end
 end
+summary(io::IO, obj::Proxy) = println(io, "Proxy")
+function show(io::IO, obj::Proxy)
+	print(io, summary(obj))
+end

@@ -19,6 +19,8 @@ module WebDriver
     using Parameters: @unpack
     import Base: show, delete!, getproperty, summary
     import Base.Broadcast: broadcastable
+    ENV["WEBDRIVER_HOST"] = get(ENV, "WEBDRIVER_HOST", "selenium")
+    ENV["WEBDRIVER_PORT"] = get(ENV, "WEBDRIVER_PORT", "4444")
     for (root, dirs, files) ∈ walkdir(joinpath(@__DIR__))
         foreach(file -> include(joinpath(root, file)), filter!(file -> occursin(r"^\d{2}_\w+\.jl$", file), files))
     end

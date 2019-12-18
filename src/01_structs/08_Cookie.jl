@@ -41,3 +41,7 @@ struct Cookie{V <: Union{AbstractString, Number},
 end
 JSON3.StructType(::Type{<:Cookie}) = JSON3.Struct()
 JSON3.omitempties(::Type{<:Cookie}) = (:domain, :expiry)
+summary(io::IO, obj::Cookie) = println(io, "Cookie")
+function show(io::IO, obj::Cookie)
+	print(io, summary(obj))
+end
