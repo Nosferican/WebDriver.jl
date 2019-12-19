@@ -1,2 +1,7 @@
 [deps]
+Base64 = "2a0f44e3-6c83-55bd-87e4-b1978d98bd5f"
+Cascadia = "54eefc05-d75b-58de-a785-1a3403f0919f"
 Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
+FileIO = "5789e2e9-d7fb-5bc7-8068-2c6fae9b9549"
+Gumbo = "708ec375-b3d6-5a57-a7ce-8257bf98657a"
+WebDriver = "05625dda-b54a-434a-8c43-5c7937dfa4f0"
