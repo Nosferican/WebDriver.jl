@@ -2,8 +2,22 @@
     Element(session::Session, location_strategy::AbstractString, value::AbstractString)::Element
     Element(element::Element, location_strategy::AbstractString, value::AbstractString)::Element
 
-Finds an element based on a session or element.
+The Find Element command is used to find an element in the current browsing context that can be used as the web element context for future element-centric commands.
+
 May use a location strategy from "css selector", "link text", "partial link text", "tag name" or "xpath".
+
+```jldoctest
+julia> capabilities = Capabilities("chrome")
+Remote WebDriver Capabilities
+browserName: chrome
+julia> wd = RemoteWebDriver(capabilities, host = ENV["WEBDRIVER_HOST"], port = parse(Int, ENV["WEBDRIVER_PORT"]))
+Remote WebDriver
+julia> session = Session(wd)
+Session
+julia> isa(session, Session)
+true
+julia> delete!(session);
+```
 """
 struct Element
     session::Session

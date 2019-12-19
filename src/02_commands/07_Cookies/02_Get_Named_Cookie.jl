@@ -1,4 +1,9 @@
 # Command: Get Named Cookie
+"""
+    cookie(session::Session, cookie::AbstractString)::Cookie
+
+Get Named Cookie.
+"""
 function cookie(session::Session, cookie::AbstractString)
     # x = "WhoIsAwesome"
     @unpack addr, id = session

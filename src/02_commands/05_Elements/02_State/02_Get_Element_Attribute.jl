@@ -1,4 +1,9 @@
 # Command: Get Element Attribute
+"""
+    element_attr(element::Element, attribute::AbstractString)
+
+Get Element Attribute.
+"""
 function element_attr(element::Element, attribute::AbstractString)
     @unpack addr, id = element.session
     element_id = element.id

@@ -61,7 +61,7 @@ module WebDriver
         element_css,
         element_text,
         element_tag,
-        property,
+        element_property,
         isenabled,
         click!,
         clear!,
@@ -77,5 +77,6 @@ module WebDriver
         accept,
         alert_text,
         alert_text!,
-        screenshot
+        screenshot,
+        sessions
 end

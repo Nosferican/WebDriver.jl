@@ -1,10 +1,13 @@
 # Command: Maximize Window
 """
 	maximize!(session::Session; window::AbstractString = "current")::Dict{String,Int}
-Maximize the window based on window handle (defaults to current).
-Returns Rect oof window.
+
+The Maximize Window command invokes the window manager-specific "maximize" operation, if any, on the window containing the current top-level browsing context.
+This typically increases the window to the maximum available size without going full-screen.
+
 !!! note
-	This command is implemented using the JSON Wire Protocol.
+
+    This command is implemented using the JSON Wire Protocol.
 """
 function maximize!(session::Session; window::AbstractString = "current")
 	@unpack addr, id = session

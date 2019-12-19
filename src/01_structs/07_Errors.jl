@@ -1,3 +1,7 @@
+"""
+    WDError <: Exception
+A Web Driver Exception.
+"""
 struct WDError <: Exception
     status::Int
     error::String

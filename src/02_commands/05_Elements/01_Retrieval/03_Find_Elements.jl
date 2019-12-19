@@ -1,4 +1,11 @@
 # Command: Find Elements
+"""
+    Elements(session::Session, location_strategy::AbstractString, value::AbstractString)::Vector{Element}
+
+Find Elements
+
+See also: [`Element`](@ref)
+"""
 function Elements(session::Session, location_strategy::AbstractString, value::AbstractString)::Vector{Element}
     location_strategy ∈ ["css selector", "link text", "partial link text", "tag name", "xpath"] ||
         throw(ArgumentError("""location_strategy must be "css selector", "link text", "partial link text", "tag name" or "xpath"."""))

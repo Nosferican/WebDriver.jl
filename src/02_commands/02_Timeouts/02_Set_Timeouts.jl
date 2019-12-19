@@ -1,4 +1,8 @@
 # Command: Set Timeouts
+"""
+    timeouts!(session::Session, timeouts::Timeouts)::Nothing
+Sets the timeouts.
+"""
 function timeouts!(session::Session, timeouts::Timeouts)::Nothing
     @unpack addr, id = session
 	response = HTTP.post("$addr/session/$id/timeouts",

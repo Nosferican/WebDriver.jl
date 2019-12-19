@@ -2,6 +2,12 @@
 """
     moveto!(session::Session; x::Integer = 0, y::Integer = 0)
     moveto!(element::Element; x::Integer = 0, y::Integer = 0)
+
+Move the mouse by an offset of the specificed element.
+
+!!! note
+
+    This command uses the JSON Wire Protocol instead of the current W3c WebDriver API.
 """
 function moveto!(session::Session; x::Integer = 0, y::Integer = 0)
     @unpack addr, id = session

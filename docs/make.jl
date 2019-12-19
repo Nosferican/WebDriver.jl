@@ -13,6 +13,7 @@ makedocs(sitename = "WebDriver",
          modules = [WebDriver],
          pages = [
              "Home" => "index.md",
+             "Manual" => "manual.md",
              "API" => "api.md"
          ]
 )

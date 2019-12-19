@@ -1,9 +1,10 @@
 # Command: Delete Cookie
 """
-    delete!(session::Session, cookie::AbstractString)
+    delete!(session::Session, cookie::AbstractString)::Nothing
+
 If cookie = "", delete all cookies. Otherwise, delete cookie matching the "cookie" name.
 """
-function delete!(session::Session, cookie::AbstractString)
+function delete!(session::Session, cookie::AbstractString)::Nothing
     @unpack addr, id = session
     if isempty(cookie)
         response = HTTP.delete("$addr/session/$id/cookie",

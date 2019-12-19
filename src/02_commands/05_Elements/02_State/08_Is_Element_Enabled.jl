@@ -1,5 +1,10 @@
 # Command: Is Element Enabled
-function isenabled(element::Element)
+"""
+    isenabled(element::Element)::Bool
+
+Is Element Enabled.
+"""
+function isenabled(element::Element)::Bool
     @unpack addr, id = element.session
     element_id = element.id
 	response = HTTP.get("$addr/session/$id/element/$element_id/enabled",

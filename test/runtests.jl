@@ -44,10 +44,10 @@ forward!(session)
 # Get Window Handle
 @inferred window_handle(session)
 # Close Window
-@test isempty(window_close!(session))
+@inferred window_close!(session)
 delete!(session)
 session = Session(wd)
-# Swith to Window
+# Switch to Window
 window!(session, window_handle(session))
 # Get Window Handles
 @inferred window_handles(session)
@@ -83,7 +83,7 @@ tsselenium = Elements(selecttype, "xpath", """//option""")
 # Get Element Attribute
 @test element_attr(t1selenium, "value") == "Selenium IDE"
 # Get Element Property
-@test property(t1selenium, "value") == "Selenium IDE"
+@test element_property(t1selenium, "value") == "Selenium IDE"
 # Get Element CSS Value
 @test element_css(selecttype, "font-size") == "13.3333px"
 # Get Element Text
@@ -96,9 +96,9 @@ tsselenium = Elements(selecttype, "xpath", """//option""")
 @test isenabled(selecttype)
 # Element Click
 radiobutton = Element(session, "xpath", """//input[@id='radiobutton']""")
-@test !property(radiobutton, "checked")
+@test !element_property(radiobutton, "checked")
 @inferred click!(radiobutton)
-@test property(radiobutton, "checked")
+@test element_property(radiobutton, "checked")
 # Element Clear
 text_box = Element(session, "xpath", """//*[@id='html5div']""")
 @test element_text(text_box) == "To be used after the AJAX section of the book"
@@ -158,3 +158,4 @@ alert_text!(session, "Nosferican")
 @inferred accept(session)
 my_name = Element(session, "xpath", "//*[@id='demo']")
 @test @inferred element_text(my_name) == "Hello Nosferican! How are you today?"
+delete!(session)

@@ -1,4 +1,9 @@
 # Command: Switch to Window
+"""
+    window!(session::Session, handle::AbstractString)
+
+The window handle associated with the current top-level browsing context.
+"""
 function window!(session::Session, handle::AbstractString)
     @unpack addr, id = session
 	response = HTTP.post("$addr/session/$id/window",

@@ -1,5 +1,10 @@
 # Command: Get Current URL
-function current_url(session::Session)
+"""
+	current_url(session::Session)::String
+
+Get Current URL.
+"""
+function current_url(session::Session)::String
 	@unpack addr, id = session
 	response = HTTP.get("$addr/session/$id/url",
 						[("Content-Type" => "application/json")])

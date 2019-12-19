@@ -1,9 +1,10 @@
 # Command: Get Window Rect
 """
-	rect(session::Session; window::AbstractString = "current")::NamedTuple
-Return window's dimensions in pixels.
+	rect(session::Session; window::AbstractString = "current")::NamedTuple{(:width, :height, :x, :y),NTuple{4,Int64}}
+
+The Get Window Rect command returns the size and position on the screen of the operating system window corresponding to the current top-level browsing context.
 """
-function rect(session::Session, window::AbstractString = "current")
+function rect(session::Session, window::AbstractString = "current")::NamedTuple{(:width, :height, :x, :y),NTuple{4,Int64}}
     @unpack addr, id = session
 	response = HTTP.get("$addr/session/$id/window/$window/size",
                         [("Content-Type" => "application/json")])

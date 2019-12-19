@@ -4,14 +4,15 @@
           window::AbstractString = "current",
           width::Union{Nothing, Real} = nothing,
           height::Union{Nothing, Real} = nothing
-         )::NamedTuple
-Sets the window's dimensions in pixels.
+         )::NamedTuple{(:width, :height, :x, :y),NTuple{4,Int64}}
+
+The Set Window Rect command alters the size and the position of the operating system window corresponding to the current top-level browsing context.
 """
 function rect!(session::Session;
                window::AbstractString = "current",
                width::Union{Nothing, Real} = nothing,
                height::Union{Nothing, Real} = nothing
-               )
+               )::NamedTuple{(:width, :height, :x, :y),NTuple{4,Int64}}
     original = rect(session, window)
                window = "current"
     @unpack addr, id = session

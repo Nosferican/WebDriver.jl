@@ -1,4 +1,9 @@
-# Command: New Window 
+# Command: New Window
+"""
+    window!(session::Session)
+
+Create a new top-level browsing context.
+"""
 function window!(session::Session)
     @unpack addr, id = session
     response = HTTP.post("$addr/session/$id/window",
