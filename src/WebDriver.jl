@@ -38,6 +38,7 @@ module WebDriver
         status,
         timeouts,
         timeouts!,
+        delete!,
         navigate!,
         current_url,
         back!,

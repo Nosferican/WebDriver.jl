@@ -14,7 +14,7 @@ which will run the Selenium standalone Google Chrome web driver.
 
 We can connect to it from WebDriver.jl through the following steps,
 
-1. We specify the requested web driver capabilities. The required argument being the browser name (`chrome`).
+We specify the requested web driver capabilities. The required argument being the browser name (`chrome`).
 
 ```@setup FirstSteps
 ENV["WEBDRIVER_HOST"] = get(ENV, "WEBDRIVER_HOST", "selenium")
@@ -35,8 +35,6 @@ The port will be that being exposed which by default is `4444`. In the example, 
 ```@example FirstSteps
 wd = RemoteWebDriver(capabilities, host = ENV["WEBDRIVER_HOST"], port = parse(Int, ENV["WEBDRIVER_PORT"]))
 ```
-
-Create a session
 
 Lastly, we can start a session in the webdriver.
 
