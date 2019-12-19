@@ -3,22 +3,32 @@ on:
   push:
     branches:
       - master
+    paths-ignore:
+      - 'LICENSE.md'
+      - 'README.md'
+      - '.github/ISSUE_TEMPLATE'
+      - '.github/CODE_OF_CONDUCT.md'
+      - '.github/CONTRIBUTING.md'
+      - '.github/pull_request_template.md'
+      - '.github/SECURITY.md'
+      - '.github/SUPPORT.md'
+      - '.github/CompatHelper.yml'
   pull_request:
     branches:
       - master
+    paths-ignore:
+      - 'LICENSE.md'
+      - 'README.md'
+      - '.github/ISSUE_TEMPLATE'
+      - '.github/CODE_OF_CONDUCT.md'
+      - '.github/CONTRIBUTING.md'
+      - '.github/pull_request_template.md'
+      - '.github/SECURITY.md'
+      - '.github/SUPPORT.md'
+      - '.github/CompatHelper.yml'
   release:
     types:
       - created
-  paths-ignore:
-    - 'LICENSE.md'
-    - 'README.md'
-    - '.github/ISSUE_TEMPLATE'
-    - '.github/CODE_OF_CONDUCT.md'
-    - '.github/CONTRIBUTING.md'
-    - '.github/pull_request_template.md'
-    - '.github/SECURITY.md'
-    - '.github/SUPPORT.md'
-    - '.github/CompatHelper.yml'
 
 jobs:
   ci:

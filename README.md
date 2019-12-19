@@ -1,6 +1,6 @@
 # WebDriver.jl
 
-A template for Julia packages.
+A WebDriver / JSON Wire Protocol Binding Compatible with Selenium for the Julia Language.
 
 | **Documentation** | **Continous Integration** |
 |:-----------------:|:-------------------------:|
