@@ -10,10 +10,14 @@ Executes JavaScript (sync / async)
 """
 function script!(session::Session, _script::AbstractString, args...; async::Bool = false)
     @unpack addr, id = session
-    response = HTTP.post("$addr/session/$id/execute$(async ? "_async" : "")",
-                         [("Content-Type" => "application/json")],
-                         JSON3.write(Dict("script" => _script,
-                                     "args" => [ isa(arg, Element) ? "ELEMENT" => arg.id : arg for arg ∈ args ])))
+    response = HTTP.post(
+        "$addr/session/$id/execute$(async ? "_async" : "")",
+        [("Content-Type" => "application/json")],
+        JSON3.write(Dict(
+            "script" => _script,
+            "args" => [isa(arg, Element) ? "ELEMENT" => arg.id : arg for arg in args],
+        )),
+    )
     @assert response.status == 200
     JSON3.read(response.body).value
 end

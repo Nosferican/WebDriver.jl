@@ -17,27 +17,27 @@ julia> status(wd) # Ready to accept new sessions?
 true
 ```
 """
-struct RemoteWebDriver{C <: Capabilities}
-	addr::String
-	capabilities::C
-	kw::Dict{String, Union{Int, String}}
-	function RemoteWebDriver(capabilities::Capabilities;
-							 host::AbstractString = "localhost",
-							 port::Integer = 4444,
-							 path::AbstractString = "/wd/hub",
-							 kwargs...
-							 )::RemoteWebDriver
-		addr = URI(scheme = "http",
-				   host = host,
-				   port = port,
-                   path = path)
-		isvalid(addr) || throw(ArgumentError("$addr is invalid"))
-		addr = string(addr)
-		kw = Dict{String, Union{Int, String}}(string(k) => isa(v, Bool) ? string(v) : v for (k, v) ∈ kwargs if !isnothing(v))
-		new{typeof(capabilities)}(addr, capabilities, kw)
-	end
+struct RemoteWebDriver{C<:Capabilities}
+    addr::String
+    capabilities::C
+    kw::Dict{String,Union{Int,String}}
+    function RemoteWebDriver(
+        capabilities::Capabilities;
+        host::AbstractString = "localhost",
+        port::Integer = 4444,
+        path::AbstractString = "/wd/hub",
+        kwargs...,
+    )::RemoteWebDriver
+        addr = URI(scheme = "http", host = host, port = port, path = path)
+        isvalid(addr) || throw(ArgumentError("$addr is invalid"))
+        addr = string(addr)
+        kw = Dict{String,Union{Int,String}}(
+            string(k) => isa(v, Bool) ? string(v) : v for (k, v) ∈ kwargs if !isnothing(v)
+        )
+        new{typeof(capabilities)}(addr, capabilities, kw)
+    end
 end
 summary(io::IO, obj::RemoteWebDriver) = println(io, "Remote WebDriver")
 function show(io::IO, obj::RemoteWebDriver)
-	print(io, summary(obj))
+    print(io, summary(obj))
 end

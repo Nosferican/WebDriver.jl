@@ -7,8 +7,10 @@ In a tabbed browser, this will typically make the tab containing the browsing co
 """
 function window_handles(session::Session)::Vector{String}
     @unpack addr, id = session
-    response = HTTP.get("$addr/session/$id/window_handles",
-                        [("Content-Type" => "application/json")])
-	@assert response.status == 200
-	convert(Vector{String}, JSON3.read(response.body).value)::Vector{String}
+    response = HTTP.get(
+        "$addr/session/$id/window_handles",
+        [("Content-Type" => "application/json")],
+    )
+    @assert response.status == 200
+    convert(Vector{String}, JSON3.read(response.body).value)::Vector{String}
 end

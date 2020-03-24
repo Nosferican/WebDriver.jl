@@ -12,9 +12,16 @@ The returned value is a dictionary with the following members:
 function rect(element::Element)::NamedTuple{(:width, :height, :x, :y),NTuple{4,Int64}}
     @unpack addr, id = element.session
     element_id = element.id
-	response = HTTP.get("$addr/session/$id/element/$element_id/rect",
-                        [("Content-Type" => "application/json")])
+    response = HTTP.get(
+        "$addr/session/$id/element/$element_id/rect",
+        [("Content-Type" => "application/json")],
+    )
     @assert response.status == 200
     output = JSON3.read(response.body).value
-	(width = output.width, height = output.height, x = output.x, y = output.y)::NamedTuple{(:width, :height, :x, :y),NTuple{4,Int64}}
+    (
+        width = output.width,
+        height = output.height,
+        x = output.x,
+        y = output.y,
+    )::NamedTuple{(:width, :height, :x, :y),NTuple{4,Int64}}
 end

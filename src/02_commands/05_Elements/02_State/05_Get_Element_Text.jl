@@ -8,8 +8,10 @@ An element's rendered text is also used for locating a elements by their link te
 function element_text(element::Element)::String
     @unpack addr, id = element.session
     element_id = element.id
-	response = HTTP.get("$addr/session/$id/element/$element_id/text",
-                        [("Content-Type" => "application/json")])
-	@assert response.status == 200
-	JSON3.read(response.body).value
+    response = HTTP.get(
+        "$addr/session/$id/element/$element_id/text",
+        [("Content-Type" => "application/json")],
+    )
+    @assert response.status == 200
+    JSON3.read(response.body).value
 end

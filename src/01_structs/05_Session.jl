@@ -17,23 +17,24 @@ julia> delete!(session);
 
 ```
 """
-struct Session{D <: Object}
-	addr::String
-	id::String
-	attrs::D
-	function Session(wd::RemoteWebDriver)
-		@unpack addr = wd
-		response = HTTP.post("$(wd.addr)/session",
-							 [("Content-Type" => "application/json")],
-							 JSON3.write(Dict("desiredCapabilities" => wd.capabilities,
-											   wd.kw...)))
-		@assert response.status == 200
-		json = JSON3.read(response.body)
-		new{typeof(json.value)}(addr, json.sessionId, json.value)
-	end
+struct Session{D<:Object}
+    addr::String
+    id::String
+    attrs::D
+    function Session(wd::RemoteWebDriver)
+        @unpack addr = wd
+        response = HTTP.post(
+            "$(wd.addr)/session",
+            [("Content-Type" => "application/json")],
+            JSON3.write(Dict("desiredCapabilities" => wd.capabilities, wd.kw...)),
+        )
+        @assert response.status == 200
+        json = JSON3.read(response.body)
+        new{typeof(json.value)}(addr, json.sessionId, json.value)
+    end
 end
 broadcastable(obj::Session) = Ref(obj)
 summary(io::IO, obj::Session) = println(io, "Session")
 function show(io::IO, obj::Session)
-	print(io, summary(obj))
+    print(io, summary(obj))
 end

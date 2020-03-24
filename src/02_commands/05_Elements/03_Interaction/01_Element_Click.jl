@@ -8,7 +8,9 @@ If the element’s center point is obscured by another element, an element click
 function click!(element::Element)::Nothing
     @unpack addr, id = element.session
     element_id = element.id
-	response = HTTP.post("$addr/session/$id/element/$element_id/click",
-                         [("Content-Type" => "application/json")])
+    response = HTTP.post(
+        "$addr/session/$id/element/$element_id/click",
+        [("Content-Type" => "application/json")],
+    )
     @assert response.status == 200
 end

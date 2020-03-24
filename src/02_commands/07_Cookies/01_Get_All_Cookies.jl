@@ -6,8 +6,8 @@ The Get Page Source command returns a string serialization of the DOM of the cur
 """
 function cookies(session::Session)::Vector{Cookie}
     @unpack addr, id = session
-    response = HTTP.get("$addr/session/$id/cookie",
-                        [("Content-Type" => "application/json")])
+    response =
+        HTTP.get("$addr/session/$id/cookie", [("Content-Type" => "application/json")])
     @assert response.status == 200
     convert(Vector{Cookie}, Cookie.(JSON3.read(response.body).value))
 end

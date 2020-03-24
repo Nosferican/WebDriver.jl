@@ -7,12 +7,16 @@ If cookie = "", delete all cookies. Otherwise, delete cookie matching the "cooki
 function delete!(session::Session, cookie::AbstractString)::Nothing
     @unpack addr, id = session
     if isempty(cookie)
-        response = HTTP.delete("$addr/session/$id/cookie",
-                               [("Content-Type" => "application/json")])
+        response = HTTP.delete(
+            "$addr/session/$id/cookie",
+            [("Content-Type" => "application/json")],
+        )
         @assert response.status == 200
     else
-        response = HTTP.delete("$addr/session/$id/cookie/$(escapeuri(cookie))",
-                               [("Content-Type" => "application/json")])
+        response = HTTP.delete(
+            "$addr/session/$id/cookie/$(escapeuri(cookie))",
+            [("Content-Type" => "application/json")],
+        )
         @assert response.status == 200
     end
     nothing

@@ -10,7 +10,9 @@ Accepts the currently displayed alert dialog.
 """
 function accept(session::Session)::Nothing
     @unpack addr, id = session
-	response = HTTP.post("$addr/session/$id/accept_alert",
-						 [("Content-Type" => "application/json")])
+    response = HTTP.post(
+        "$addr/session/$id/accept_alert",
+        [("Content-Type" => "application/json")],
+    )
     @assert response.status == 200
 end
