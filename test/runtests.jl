@@ -2,7 +2,7 @@ using Test, Documenter, WebDriver
 using WebDriver: StatusError
 DocMeta.setdocmeta!(WebDriver, :DocTestSetup, :(using WebDriver), recursive = true)
 
-ENV["WEBDRIVER_HOST"] = get(ENV, "WEBDRIVER_HOST", "selenium")
+ENV["WEBDRIVER_HOST"] = get(ENV, "WEBDRIVER_HOST", "localhost")
 ENV["WEBDRIVER_PORT"] = get(ENV, "WEBDRIVER_PORT", "4444")
 
 @testset "WebDriver" begin
@@ -11,7 +11,11 @@ end
 
 capabilities = Capabilities("chrome")
 @test isa(capabilities, Capabilities)
-wd = RemoteWebDriver(capabilities, host = ENV["WEBDRIVER_HOST"], port = parse(Int, ENV["WEBDRIVER_PORT"]))
+wd = RemoteWebDriver(
+    capabilities,
+    host = ENV["WEBDRIVER_HOST"],
+    port = parse(Int, ENV["WEBDRIVER_PORT"]),
+)
 # New Session
 session = Session(wd)
 @test isa(session, Session)
