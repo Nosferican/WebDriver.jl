@@ -56,7 +56,7 @@ window!(session, window_handle(session))
 # Get Window Handles
 @inferred window_handles(session)
 # New Window
-@test window!(session).type == "tab"
+@inferred window!(session)
 # Switch to Frame
 # @inferred frame!(session, window_handle(session))
 # Switch to Parent Frame
