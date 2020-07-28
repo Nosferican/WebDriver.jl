@@ -4,7 +4,7 @@
     screenshot(element::Element)::String
     screenshot(source::Union{Session, Element}, sink::Union{AbstractString, IO})
 
-Take Screenshot and optionally save it to a filepath.
+Take Screenshot and optionally saves it.
 """
 function screenshot end
 
