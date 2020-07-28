@@ -2,8 +2,9 @@
 """
     screenshot(session::Session)::String
     screenshot(element::Element)::String
+    screenshot(source::Union{Session, Element}, sink::Union{AbstractString, IO})
 
-Take Screenshot.
+Take Screenshot and optionally save it to a filepath.
 """
 function screenshot end
 
@@ -23,3 +24,5 @@ function screenshot(element::Element)::String
     @assert response.status == 200
     JSON3.read(response.body).value
 end
+screenshot(source::Union{Session, Element}, sink::Union{AbstractString, IO}) =
+    write(sink, base64decode(source))

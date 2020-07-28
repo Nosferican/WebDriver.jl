@@ -13,6 +13,7 @@ julia> using WebDriver
 module WebDriver
     using Base.Filesystem: realpath
     using Base.Iterators: flatten
+    using Base64: base64decode
     using Dates: DateTime, datetime2unix, unix2datetime
     using HTTP: HTTP, URI, escapeuri, ExceptionRequest.StatusError
     using JSON3: JSON3, Object
