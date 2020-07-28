@@ -4,7 +4,7 @@
 
 Create a new top-level browsing context.
 """
-function window!(session::Session)
+function window!(session::Session)::NamedTuple{(:type, :handle),NTuple{2, String}}
     @unpack addr, id = session
     response =
         HTTP.post("$addr/session/$id/window/new", [("Content-Type" => "application/json")])
