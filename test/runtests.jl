@@ -56,7 +56,7 @@ window!(session, window_handle(session))
 # Get Window Handles
 @inferred window_handles(session)
 # New Window
-@test_broken window!(session)
+@test window!(session).type == "tab"
 # Switch to Frame
 # @inferred frame!(session, window_handle(session))
 # Switch to Parent Frame
@@ -64,7 +64,8 @@ window!(session, window_handle(session))
 # Get Window Rect
 @inferred rect(session)
 # Set Window Rect
-@test_broken rect!(session, width = 600)
+@test rect!(session, width = 525, height = 489) == (width = 525, height = 489, x = 10, y = 10)
+@test rect!(session, width = 1050, height = 978) == (width = 1050, height = 978, x = 10, y = 10)
 # Maximize Window
 @inferred maximize!(session)
 # Minimize Window
@@ -83,7 +84,7 @@ t1selenium = Element(selecttype, "xpath", """//option[@value='Selenium IDE']""")
 # Find Elements from Element
 tsselenium = Elements(selecttype, "xpath", """//option""")
 # Is Element Selected
-@test_broken isselected(selecttype)
+@test !isselected(selecttype)
 # Get Element Attribute
 @test element_attr(t1selenium, "value") == "Selenium IDE"
 # Get Element Property
@@ -103,6 +104,7 @@ radiobutton = Element(session, "xpath", """//input[@id='radiobutton']""")
 @test !element_property(radiobutton, "checked")
 @inferred click!(radiobutton)
 @test element_property(radiobutton, "checked")
+@test isselected(radiobutton)
 # Element Clear
 text_box = Element(session, "xpath", """//*[@id='html5div']""")
 @test element_text(text_box) == "To be used after the AJAX section of the book"

@@ -9,7 +9,7 @@ function isselected(element::Element)::Bool
     @unpack addr, id = element.session
     element_id = element.id
     response = HTTP.get(
-        "$addr/session/$id/element/$element_id/active",
+        "$addr/session/$id/element/$element_id/selected",
         [("Content-Type" => "application/json")],
     )
     @assert response.status == 200

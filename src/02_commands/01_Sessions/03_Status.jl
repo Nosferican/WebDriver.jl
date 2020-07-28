@@ -8,5 +8,5 @@ function status(wd::RemoteWebDriver)::Bool
     response = HTTP.get("$addr/status", [("Content-Type" => "application/json")])
     @assert response.status == 200
     json = JSON3.read(response.body).value
-    json.ready && json.message == "Server is running"
+    json.ready
 end

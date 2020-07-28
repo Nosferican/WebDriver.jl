@@ -14,13 +14,7 @@ function rect!(
     width::Union{Nothing,Real} = nothing,
     height::Union{Nothing,Real} = nothing,
 )::NamedTuple{(:width, :height, :x, :y),NTuple{4,Int64}}
-    original = rect(session, window)
-    window = "current"
     @unpack addr, id = session
-    width = 500
-    height = nothing
-    x = nothing
-    y = nothing
     response = HTTP.post(
         "$addr/session/$id/window/$window/size",
         [("Content-Type" => "application/json")],
