@@ -3,9 +3,9 @@
 A WebDriver / JSON Wire Protocol Binding Compatible with Selenium for the Julia Language.
 
 | **Documentation** | **Continous Integration** |
-|:-----------------:|:-------------------------:|
-| [![][ddi]][ddu]   | [![][bsi]][bsu]           |
-| [![][li]][lu]     | [![][cci]][ccu]           |
+| :---------------: | :-----------------------: |
+|  [![][ddi]][ddu]  |      [![][bsi]][bsu]      |
+|   [![][li]][lu]   |      [![][cci]][ccu]      |
 
 [bsi]: https://github.com/Nosferican/WebDriver.jl/workflows/CI/badge.svg
 [bsu]: https://github.com/Nosferican/WebDriver.jl/actions?workflow=CI
