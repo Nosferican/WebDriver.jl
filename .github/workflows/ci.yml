@@ -47,8 +47,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: julia-actions/setup-julia@v1
-        env:
-          ACTIONS_STEP_DEBUG: true
+        # env:
+        #   ACTIONS_STEP_DEBUG: true
         with:
           version: ${{ matrix.julia-version }}
           arch: ${{ matrix.arch }}
