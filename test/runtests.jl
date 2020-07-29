@@ -1,5 +1,6 @@
-using Test, Documenter, WebDriver
+using Test, WebDriver
 using WebDriver: StatusError
+using Documenter
 DocMeta.setdocmeta!(WebDriver, :DocTestSetup, :(using WebDriver), recursive = true)
 
 ENV["WEBDRIVER_HOST"] = get(ENV, "WEBDRIVER_HOST", "localhost")
@@ -15,7 +16,7 @@ wd = RemoteWebDriver(
     capabilities,
     host = ENV["WEBDRIVER_HOST"],
     port = parse(Int, ENV["WEBDRIVER_PORT"]),
-)
+    )
 # New Session
 session = Session(wd)
 @test isa(session, Session)
@@ -56,9 +57,7 @@ window!(session, window_handle(session))
 # Get Window Handles
 @inferred window_handles(session)
 # New Window
-@inferred window!(session)
-# Switch to Frame
-# @inferred frame!(session, window_handle(session))
+# @inferred window!(session)
 # Switch to Parent Frame
 @inferred parent_frame!(session)
 # Get Window Rect
