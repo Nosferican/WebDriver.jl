@@ -6,10 +6,10 @@ The Is Element Selected command determines if the referenced element is selected
 This operation only makes sense on input elements of the Checkbox and Radio Button states, or on option elements.
 """
 function isselected(element::Element)::Bool
-    @unpack addr, id = session
+    @unpack addr, id = element.session
     element_id = element.id
     response = HTTP.get(
-        "$addr/session/$id/element/$element_id/active",
+        "$addr/session/$id/element/$element_id/selected",
         [("Content-Type" => "application/json")],
     )
     @assert response.status == 200
