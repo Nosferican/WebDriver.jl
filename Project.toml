@@ -1,7 +1,7 @@
 name = "WebDriver"
 uuid = "05625dda-b54a-434a-8c43-5c7937dfa4f0"
 authors = ["José Bayoán Santiago Calderón <naoyabpr@gmail.com>"]
-version = "0.1.1"
+version = "0.1.2"
 
 [deps]
 Base64 = "2a0f44e3-6c83-55bd-87e4-b1978d98bd5f"
