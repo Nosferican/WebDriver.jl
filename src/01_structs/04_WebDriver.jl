@@ -2,7 +2,7 @@
 	RemoteWebDriver(capabilities::Capabilities;
                     host::AbstractString = "localhost",
                     port::Integer = 4444,
-                    path::AbstractString = "/wd/hub",
+                    path::AbstractString = "",
 					kwargs...)::RemoteWebDriver
 
 Specifies a remote web driver according to [W3C](https://www.w3.org/TR/webdriver).
