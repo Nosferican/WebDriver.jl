@@ -9,7 +9,7 @@ function cookie(session::Session, cookie::AbstractString)
     @unpack addr, id = session
     response = HTTP.get(
         "$addr/session/$id/cookie/$(escapeuri(cookie))",
-        [("Content-Type" => "application/json")],
+        [("Content-Type" => "application/json; charset=utf-8")],
     )
     @assert response.status == 200
     JSON3.read(response.body).value

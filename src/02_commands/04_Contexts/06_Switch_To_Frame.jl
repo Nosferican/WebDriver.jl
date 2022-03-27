@@ -9,7 +9,7 @@ function frame! end
 #     @unpack addr, id = session
 #     response = HTTP.post(
 #         "$addr/session/$id/frame",
-#         [("Content-Type" => "application/json")],
+#         [("Content-Type" => "application/json; charset=utf-8")],
 #         JSON3.write(Dict("id" => nothing))),
 #     )
 #     @assert response.status == 200
@@ -18,7 +18,7 @@ function frame!(frame::Element)::Nothing
     @unpack addr, id = frame.session
     response = HTTP.post(
         "$addr/session/$id/frame",
-        [("Content-Type" => "application/json")],
+        [("Content-Type" => "application/json; charset=utf-8")],
         JSON3.write(Dict("id" => ("ELEMENT" => frame.id))),
     )
     @assert response.status == 200

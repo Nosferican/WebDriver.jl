@@ -8,7 +8,7 @@ function cookie!(session::Session, cookie::Cookie)::Nothing
     @unpack addr, id = session
     response = HTTP.post(
         "$addr/session/$id/cookie",
-        [("Content-Type" => "application/json")],
+        [("Content-Type" => "application/json; charset=utf-8")],
         JSON3.write("cookie" => cookie),
     )
     @assert response.status == 200

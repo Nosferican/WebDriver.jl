@@ -6,7 +6,7 @@ This command returns the document title of the current top-level browsing contex
 """
 function document_title(session::Session)::String
     @unpack addr, id = session
-    response = HTTP.get("$addr/session/$id/title", [("Content-Type" => "application/json")])
+    response = HTTP.get("$addr/session/$id/title", [("Content-Type" => "application/json; charset=utf-8")])
     @assert response.status == 200
     JSON3.read(response.body).value
 end

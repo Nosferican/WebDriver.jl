@@ -17,7 +17,7 @@ function minimize!(
     @unpack addr, id = session
     response = HTTP.post(
         "$addr/session/$id/window/$window/minimize",
-        [("Content-Type" => "application/json")],
+        [("Content-Type" => "application/json; charset=utf-8")],
     )
     @assert response.status == 200
     output = JSON3.read(response.body).value

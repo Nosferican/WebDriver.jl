@@ -9,7 +9,7 @@ function window_handles(session::Session)::Vector{String}
     @unpack addr, id = session
     response = HTTP.get(
         "$addr/session/$id/window_handles",
-        [("Content-Type" => "application/json")],
+        [("Content-Type" => "application/json; charset=utf-8")],
     )
     @assert response.status == 200
     convert(Vector{String}, JSON3.read(response.body).value)::Vector{String}

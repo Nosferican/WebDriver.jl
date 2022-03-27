@@ -25,7 +25,7 @@ struct RemoteWebDriver{C<:Capabilities}
         capabilities::Capabilities;
         host::AbstractString = "localhost",
         port::Integer = 4444,
-        path::AbstractString = "/wd/hub",
+        path::AbstractString = "",
         kwargs...,
     )::RemoteWebDriver
         addr = URI(scheme = "http", host = host, port = port, path = path)

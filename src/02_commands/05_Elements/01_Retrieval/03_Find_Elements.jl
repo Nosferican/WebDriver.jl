@@ -17,7 +17,7 @@ function Elements(
     @unpack addr, id = session
     response = HTTP.post(
         "$addr/session/$id/elements",
-        [("Content-Type" => "application/json")],
+        [("Content-Type" => "application/json; charset=utf-8")],
         JSON3.write(Dict("using" => location_strategy, "value" => value)),
     )
     @assert response.status == 200

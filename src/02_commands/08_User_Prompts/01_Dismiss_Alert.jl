@@ -12,7 +12,7 @@ function dismiss(session::Session)
     @unpack addr, id = session
     response = HTTP.post(
         "$addr/session/$id/dismiss_alert",
-        [("Content-Type" => "application/json")],
+        [("Content-Type" => "application/json; charset=utf-8")],
     )
     @assert response.status == 200
 end

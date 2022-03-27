@@ -6,7 +6,7 @@
 #     @unpack addr, id = session
 #     x = try
 #     response = HTTP.post("$addr/session/$id/actions",
-#                          [("Content-Type" => "application/json")],
+#                          [("Content-Type" => "application/json; charset=utf-8")],
 #                          JSON3.write("parameters" => "moveto!Element($(hoverOver.id))"))
 #     catch err
 #         err
