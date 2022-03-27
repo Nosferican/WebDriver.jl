@@ -14,7 +14,7 @@ function element_keys!(element::Element, value::AbstractString)::Nothing
     element_id = element.id
     response = HTTP.post(
         "$addr/session/$id/element/$element_id/value",
-        [("Content-Type" => "application/json")],
+        [("Content-Type" => "application/json; charset=utf-8")],
         JSON3.write("value" => split(value, "")),
     )
     @assert response.status == 200

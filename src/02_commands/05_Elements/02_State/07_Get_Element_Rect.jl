@@ -14,7 +14,7 @@ function rect(element::Element)::NamedTuple{(:width, :height, :x, :y),NTuple{4,I
     element_id = element.id
     response = HTTP.get(
         "$addr/session/$id/element/$element_id/rect",
-        [("Content-Type" => "application/json")],
+        [("Content-Type" => "application/json; charset=utf-8")],
     )
     @assert response.status == 200
     output = JSON3.read(response.body).value

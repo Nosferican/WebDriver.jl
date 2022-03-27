@@ -9,7 +9,7 @@ function element_attr(element::Element, attribute::AbstractString)
     element_id = element.id
     response = HTTP.get(
         "$addr/session/$id/element/$element_id/attribute/$attribute",
-        [("Content-Type" => "application/json")],
+        [("Content-Type" => "application/json; charset=utf-8")],
     )
     @assert response.status == 200
     JSON3.read(response.body).value

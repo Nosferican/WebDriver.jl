@@ -25,7 +25,7 @@ struct Session{D<:Object}
         @unpack addr = wd
         response = HTTP.post(
             "$(wd.addr)/session",
-            [("Content-Type" => "application/json")],
+            [("Content-Type" => "application/json; charset=utf-8")],
             JSON3.write(Dict("desiredCapabilities" => wd.capabilities, wd.kw...)),
         )
         @assert response.status == 200

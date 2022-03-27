@@ -39,7 +39,7 @@ struct Element
         # value = "//select[@id='selecttype']"
         response = HTTP.post(
             "$addr/session/$id/element",
-            [("Content-Type" => "application/json")],
+            [("Content-Type" => "application/json; charset=utf-8")],
             JSON3.write(Dict("using" => location_strategy, "value" => value)),
         )
         @assert response.status == 200
@@ -58,7 +58,7 @@ struct Element
         element_id = element.id
         response = HTTP.post(
             "$addr/session/$id/element/$element_id/element",
-            [("Content-Type" => "application/json")],
+            [("Content-Type" => "application/json; charset=utf-8")],
             JSON3.write(Dict("using" => location_strategy, "value" => value)),
         )
         @assert response.status == 200

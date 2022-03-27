@@ -9,7 +9,7 @@ Returns a list of the currently active sessions.
 """
 function sessions(wd::RemoteWebDriver)::Vector{String}
     @unpack addr = wd
-    response = HTTP.get("$addr/sessions", [("Content-Type" => "application/json")])
+    response = HTTP.get("$addr/sessions", [("Content-Type" => "application/json; charset=utf-8")])
     @assert response.status == 200
     output = JSON3.read(response.body).value
     isempty(output) ? Vector{String}() :

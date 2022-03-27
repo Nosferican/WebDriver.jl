@@ -8,7 +8,7 @@ function window!(session::Session, handle::AbstractString)
     @unpack addr, id = session
     response = HTTP.post(
         "$addr/session/$id/window",
-        [("Content-Type" => "application/json")],
+        [("Content-Type" => "application/json; charset=utf-8")],
         JSON3.write("handle" => handle),
     )
     @assert response.status == 200

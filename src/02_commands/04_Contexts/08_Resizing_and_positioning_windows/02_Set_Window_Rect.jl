@@ -17,7 +17,7 @@ function rect!(
     @unpack addr, id = session
     response = HTTP.post(
         "$addr/session/$id/window/$window/size",
-        [("Content-Type" => "application/json")],
+        [("Content-Type" => "application/json; charset=utf-8")],
         JSON3.write(Dict("width" => width, "height" => height)),
     )
     @assert response.status == 200

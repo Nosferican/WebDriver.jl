@@ -10,7 +10,7 @@ function click!(element::Element)::Nothing
     element_id = element.id
     response = HTTP.post(
         "$addr/session/$id/element/$element_id/click",
-        [("Content-Type" => "application/json")],
+        [("Content-Type" => "application/json; charset=utf-8")],
     )
     @assert response.status == 200
 end

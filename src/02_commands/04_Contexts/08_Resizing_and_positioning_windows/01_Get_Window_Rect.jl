@@ -11,7 +11,7 @@ function rect(
     @unpack addr, id = session
     response = HTTP.get(
         "$addr/session/$id/window/$window/size",
-        [("Content-Type" => "application/json")],
+        [("Content-Type" => "application/json; charset=utf-8")],
     )
     @assert response.status == 200
     output = JSON3.read(response.body).value

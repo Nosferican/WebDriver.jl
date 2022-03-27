@@ -12,7 +12,7 @@ function alert_text!(session::Session, text::AbstractString)::Nothing
     @unpack addr, id = session
     response = HTTP.post(
         "$addr/session/$id/alert_text",
-        [("Content-Type" => "application/json")],
+        [("Content-Type" => "application/json; charset=utf-8")],
         JSON3.write(Dict("text" => text)),
     )
     @assert response.status == 200

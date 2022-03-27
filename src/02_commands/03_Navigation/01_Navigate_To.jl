@@ -10,7 +10,7 @@ function navigate!(session::Session, url::AbstractString)
         @unpack addr, id = session
         response = HTTP.post(
             "$addr/session/$id/url",
-            [("Content-Type" => "application/json")],
+            [("Content-Type" => "application/json; charset=utf-8")],
             """{"url": "$url"}""",
         )
         nothing

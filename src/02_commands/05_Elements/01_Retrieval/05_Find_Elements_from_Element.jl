@@ -18,7 +18,7 @@ function Elements(
     element_id = element.id
     response = HTTP.post(
         "$addr/session/$id/element/$element_id/elements",
-        [("Content-Type" => "application/json")],
+        [("Content-Type" => "application/json; charset=utf-8")],
         JSON3.write(Dict("using" => location_strategy, "value" => value)),
     )
     @assert response.status == 200
