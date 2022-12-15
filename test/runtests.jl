@@ -73,9 +73,7 @@ window!(session, window_handle(session))
 @test_throws StatusError minimize!(session)
 # Get Active Element
 @inferred active_element(session)
-#=
-# Find Element
-navigate!(session, "http://book.theautomatedtester.co.uk/chapter1")
+navigate!(session, "https://web.archive.org/web/20210510235232/http://book.theautomatedtester.co.uk/chapter1")
 selecttype = Element(session, "xpath", """//select[@id='selecttype']""")
 @test isa(selecttype, Element)
 # Find Elements
@@ -117,19 +115,20 @@ element_keys!(text_box, "All your base are belong to us")
 @test element_text(text_box) == "All your base are belong to us"
 # Get Page Source
 @inferred source(session);
+#=
 # Execute Script
-navigate!(session, "http://book.theautomatedtester.co.uk/chapter1")
+navigate!(session, "https://web.archive.org/web/20210510235232/http://book.theautomatedtester.co.uk/chapter1")
 selecttype = Element(session, "xpath", """//select[@id='selecttype']""")
 @test element_attr(selecttype, "value") == "Selenium IDE"
 script!(session, "arguments[0].value = arguments[1];", selecttype, "Selenium Grid")
-@test element_attr(selecttype, "value") == "Selenium Grid"
+@test_broken element_attr(selecttype, "value") == "Selenium Grid"
 # Get All Cookies
-navigate!(session, "http://book.theautomatedtester.co.uk/chapter8")
-@test length(cookies(session)) == 1
+navigate!(session, "https://web.archive.org/web/20210511003321/http://book.theautomatedtester.co.uk/chapter8")
+@test_broken length(cookies(session)) == 1
 # Get Named Cookie
 second_cookie = Element(session, "xpath", "//input[@id='secondCookie']")
 click!(second_cookie)
-@test cookie(session, "visitorCount").name == "visitorCount"
+@test_broken cookie(session, "visitorCount").name == "visitorCount"
 # Add Cookie
 @inferred cookie!(session, Cookie("WhoIsAwesome", "ME!"))
 @test cookie(session, "WhoIsAwesome").value == "ME!"
@@ -137,18 +136,19 @@ click!(second_cookie)
 @inferred delete!(session, "")
 @inferred cookies(session)
 # Perform Actions (Untested)
-navigate!(session, "http://book.theautomatedtester.co.uk/chapter4")
+navigate!(session, "https://web.archive.org/web/20210511015308/http://book.theautomatedtester.co.uk/chapter4")
 hoverOver = Element(session, "xpath", "//*[@id='hoverOver']")
-@inferred moveto!(hoverOver)
+@inferred moveto!(hoverOver) # Broken
 # User Prompts
 # Get alert_text Text
-@inferred alert_text(session) == "on MouseOver worked"
+@inferred alert_text(session) == "on MouseOver worked" # Broken
 # Dismiss alert_text
 @inferred dismiss(session)
 @test_throws StatusError alert_text(session)
 # Accept alert_text
-navigate!(session, "http://book.theautomatedtester.co.uk/chapter4")
+navigate!(session, "https://web.archive.org/web/20210511015308/http://book.theautomatedtester.co.uk/chapter4")
 hoverOver = Element(session, "xpath", "//*[@id='hoverOver']")
+element.id
 @inferred moveto!(hoverOver)
 @inferred alert_text(session) == "on MouseOver worked"
 @inferred accept(session)
@@ -168,3 +168,5 @@ alert_text!(session, "Nosferican")
 my_name = Element(session, "xpath", "//*[@id='demo']")
 @test @inferred element_text(my_name) == "Hello Nosferican! How are you today?"
 delete!(session)
+
+# write("img.png", WebDriver.base64decode(screenshot(session)))
