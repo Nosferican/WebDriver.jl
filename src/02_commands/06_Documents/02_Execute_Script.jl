@@ -6,7 +6,7 @@ Executes JavaScript (sync / async)
 
 !!! note
 
-    This command uses the JSON Wire Protocol instead of the current W3c WebDriver API.
+    This command uses the JSON Wire Protocol instead of the current W3C WebDriver API.
 """
 function script!(session::Session, _script::AbstractString, args...; async::Bool = false)
     @unpack addr, id = session
